@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Белый сайт с арбузом, счетчиком и прямоугольником</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+        body {
+            background-color: white;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        img {
+            max-width: 33.33%;
+            height: auto;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+            position: relative;
+            top: -5px;
+        }
+
+        img:hover {
+            transform: scale(1.1);
+        }
+
+        #counter {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 32px;
+            margin-top: 20px;
+        }
+
+        .rectangle {
+            width: 300px;
+            height: 500px;
+            background-color: #333;
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .inner-rectangle {
+            width: 250px;
+            height: 450px;
+            background-color: #ccc;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .inner-rectangle p {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 12px;
+            color: #333;
+            margin: 5px 0;
+        }
+
+        .rectangle-left {
+            width: 200px;
+            height: 500px;
+            background-color: #333;
+            position: absolute;
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .inner-rectangle-left {
+            width: 150px;
+            height: 450px;
+            background-color: #ccc;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .inner-rectangle-left p {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 12px;
+            color: #333;
+            margin: 5px 0;
+        }
+
+        .rectangle:after,
+        .rectangle-left:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-top: 20px solid #333;
+        }
+
+        .plus-one {
+            position: absolute;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 32px;
+            font-weight: bold;
+            color: #000;
+            opacity: 0;
+            animation: flyUp 2s ease-in-out forwards;
+            pointer-events: none;
+        }
+
+        @keyframes flyUp {
+            0% {
+                transform: translate(0, 0);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(0, -100px);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <img src="https://avatars.mds.yandex.net/get-mpic/4012413/img_id1964517538384392278.jpeg/orig" alt="Арбуз" onclick="incrementCounter(event)">
+    <div id="counter">0</div>
+    <div class="rectangle-left">
+        <div class="inner-rectangle-left">
+            <p>Time played: <span id="timePlayedText">0 seconds</span></p>
+            <p>+1: <span id="plus1Count">0</span></p>
+            <p>+2: <span id="plus2Count">0</span></p>
+            <p>+3: <span id="plus3Count">0</span></p>
+            <p>+4: <span id="plus4Count">0</span></p>
+            <p>+5: <span id="plus5Count">0</span></p>
+            <p>+6: <span id="plus6Count">0</span></p>
+            <p>+7: <span id="plus7Count">0</span></p>
+            <p>+8: <span id="plus8Count">0</span></p>
+            <p>+9: <span id="plus9Count">0</span></p>
+            <p>+10: <span id="plus10Count">0</span></p>
+            <p>+11: <span id="plus11Count">0</span></p>
+            <p>+12: <span id="plus12Count">0</span></p>
+            <p>+13: <span id="plus13Count">0</span></p>
+            <p>+14: <span id="plus14Count">0</span></p>
+            <p>+15+: <span id="plus15Count">0</span></p>
+        </div>
+    </div>
+    <div class="rectangle">
+        <div class="inner-rectangle">
+            <p>Total clicks: <span id="totalClicks">0</span></p>
+            <p>Chance +1: 40%</p>
+            <p>Chance +2: 20%</p>
+            <p>Chance +3: 10%</p>
+            <p>Chance +4: 5%</p>
+            <p>Chance +5: 5%</p>
+            <p>Chance +6: 3%</p>
+            <p>Chance +7: 2.5%</p>
+            <p>Chance +8: 2.5%</p>
+            <p>Chance +9: 2%</p>
+            <p>Chance +10: 1.5%</p>
+            <p>Chance +11: 1.2%</p>
+            <p>Chance +12: 1.1%</p>
+            <p>Chance +13: 1%</p>
+            <p>Chance +14: 0.5%</p>
+            <p>Chance 15+: 0.1%</p>
+        </div>
+    </div>
+
+    <script>
+        let count = 0;
+        let startTime = Date.now();
+        let plus1Count = 0, plus2Count = 0, plus3Count = 0, plus4Count = 0, plus5Count = 0;
+        let plus6Count = 0, plus7Count = 0, plus8Count = 0, plus9Count = 0, plus10Count = 0;
+        let plus11Count = 0, plus12Count = 0, plus13Count = 0, plus14Count = 0, plus15Count = 0;
+
+        function incrementCounter(event) {
+            const randomNumber = Math.random() * 100;
+            let bonus = 0;
+
+            if (randomNumber < 40) {
+                bonus = 1;
+                plus1Count++;
+            } else if (randomNumber < 60) {
+                bonus = 2;
+                plus2Count++;
+            } else if (randomNumber < 70) {
+                bonus = 3;
+                plus3Count++;
+            } else if (randomNumber < 75) {
+                bonus = 4;
+                plus4Count++;
+            } else if (randomNumber < 80) {
+                bonus = 5;
+                plus5Count++;
+            } else if (randomNumber < 83) {
+                bonus = 6;
+                plus6Count++;
+            } else if (randomNumber < 85.5) {
+                bonus = 7;
+                plus7Count++;
+            } else if (randomNumber < 88) {
+                bonus = 8;
+                plus8Count++;
+            } else if (randomNumber < 90) {
+                bonus = 9;
+                plus9Count++;
+            } else if (randomNumber < 91.5) {
+                bonus = 10;
+                plus10Count++;
+            } else if (randomNumber < 92.7) {
+                bonus = 11;
+                plus11Count++;
+            } else if (randomNumber < 93.8) {
+                bonus = 12;
+                plus12Count++;
+            } else if (randomNumber < 94.8) {
+                bonus = 13;
+                plus13Count++;
+            } else if (randomNumber < 95.3) {
+                bonus = 14;
+                plus14Count++;
+            } else if (randomNumber < 95.4) {
+                bonus = 15;
+                plus15Count++;
+            }
+
+            count += bonus;
+            document.getElementById("counter").textContent = count;
+            document.getElementById("totalClicks").textContent = count;
+
+            document.getElementById("plus1Count").textContent = plus1Count;
+            document.getElementById("plus2Count").textContent = plus2Count;
+            document.getElementById("plus3Count").textContent = plus3Count;
+            document.getElementById("plus4Count").textContent = plus4Count;
+            document.getElementById("plus5Count").textContent = plus5Count;
+            document.getElementById("plus6Count").textContent = plus6Count;
+            document.getElementById("plus7Count").textContent = plus7Count;
+            document.getElementById("plus8Count").textContent = plus8Count;
+            document.getElementById("plus9Count").textContent = plus9Count;
+            document.getElementById("plus10Count").textContent = plus10Count;
+            document.getElementById("plus11Count").textContent = plus11Count;
+            document.getElementById("plus12Count").textContent = plus12Count;
+            document.getElementById("plus13Count").textContent = plus13Count;
+            document.getElementById("plus14Count").textContent = plus14Count;
+            document.getElementById("plus15Count").textContent = plus15Count;
+
+            const img = document.querySelector('img');
+            const imgRect = img.getBoundingClientRect();
+
+            const x = Math.floor(Math.random() * img.width) + imgRect.left;
+            const y = Math.floor(Math.random() * img.height) + imgRect.top;
+
+            const plusOne = document.createElement("div");
+            plusOne.classList.add("plus-one");
+            plusOne.textContent = `+${bonus}`;
+            plusOne.style.left = `${x}px`;
+            plusOne.style.top = `${y}px`;
+            document.body.appendChild(plusOne);
+
+            setTimeout(() => {
+                plusOne.remove();
+            }, 2000);
+
+            updateTimePlayed();
+        }
+
+        function updateTimePlayed() {
+            const currentTime = Date.now();
+            const elapsedTime = Math.floor((currentTime - startTime) / 1000);
+            document.getElementById("timePlayedText").textContent = `${elapsedTime} seconds`;
+        }
+
+        setInterval(updateTimePlayed, 1000);
+    </script>
+</body>
+</html>
